@@ -1,0 +1,131 @@
+/* Laith — research site. Palette taken from distribution single-line drawings:
+   drafting paper, conductor ink, phase-blue feeder, solar amber for energy flow. */
+:root {
+  --paper: #F3F6F8;
+  --ink: #17253A;
+  --ink-soft: #4E5E72;
+  --feeder: #2C64A8;
+  --solar: #D99A00;
+  --rule: #C9D3DC;
+  --white: #FFFFFF;
+
+  --head: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+
+  --measure: 68ch;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--feeder); text-underline-offset: 0.18em; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 3px solid var(--solar); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { width: min(100% - 2.5rem, 64rem); margin-inline: auto; }
+.prose { max-width: var(--measure); }
+
+/* Header */
+.site-head { border-bottom: 1px solid var(--rule); background: var(--paper); }
+.site-head .wrap { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; padding-block: 1.1rem; }
+.name { font-family: var(--head); font-weight: 600; font-size: 1.25rem; color: var(--ink); text-decoration: none; letter-spacing: 0.01em; }
+.nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin: 0; padding: 0; list-style: none; }
+.nav a { color: var(--ink-soft); text-decoration: none; padding-block: 0.25rem; border-bottom: 2px solid transparent; }
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--feeder); }
+
+/* Type scale (1.25) */
+h1, h2, h3 { font-family: var(--head); line-height: 1.15; margin: 0 0 0.6em; font-weight: 600; }
+h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); letter-spacing: -0.01em; max-width: 20ch; }
+h2 { font-size: clamp(1.55rem, 3vw, 2rem); }
+h3 { font-size: 1.3rem; }
+p { margin: 0 0 1em; }
+.lede { font-size: 1.2rem; color: var(--ink-soft); max-width: 58ch; }
+
+main { padding-block: 3rem 4rem; }
+section + section { margin-top: 3.5rem; }
+
+/* Hero */
+.hero { padding-top: 1rem; }
+.hero .who { margin-top: 1.5rem; color: var(--ink-soft); }
+.hero .who strong { color: var(--ink); font-weight: 600; }
+
+.feeder { margin: 2.5rem 0 0.5rem; width: 100%; height: auto; }
+.feeder .line { stroke: var(--feeder); stroke-width: 3; fill: none; stroke-linecap: round; }
+.feeder .house { fill: var(--white); stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; }
+.feeder .pv { fill: var(--solar); }
+.feeder .sub { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.feeder .trade { fill: none; stroke: var(--solar); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 9; }
+.feeder text { font-family: var(--body); font-size: 15px; fill: var(--ink-soft); }
+.feeder-caption { font-size: 0.95rem; color: var(--ink-soft); max-width: 62ch; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .feeder .trade { animation: flow 2.4s linear 0.4s 3 both; }
+  @keyframes flow { from { stroke-dashoffset: 66; } to { stroke-dashoffset: 0; } }
+}
+
+/* Plain-language points on the home page */
+.points { display: grid; gap: 2rem 3rem; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 52rem; margin: 0; padding: 0; list-style: none; }
+.points li { border-top: 3px solid var(--feeder); padding-top: 0.9rem; }
+.points h3 { font-size: 1.15rem; margin-bottom: 0.35em; }
+.points p { color: var(--ink-soft); margin: 0; }
+
+.award { border-left: 4px solid var(--solar); padding: 0.2rem 0 0.2rem 1rem; max-width: var(--measure); }
+
+/* Research: stages hang off one vertical feeder, because they build on each other */
+.stages { list-style: none; margin: 2.5rem 0 0; padding: 0; counter-reset: stage; }
+.stage { position: relative; padding: 0 0 3rem 3.25rem; counter-increment: stage; }
+.stage::before { content: ""; position: absolute; left: 0.95rem; top: 0.6rem; bottom: 0; width: 3px; background: var(--feeder); }
+.stage:last-child::before { display: none; }
+.stage::after {
+  content: counter(stage);
+  position: absolute; left: 0; top: 0;
+  width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--white); border: 3px solid var(--feeder);
+  font-family: var(--head); font-weight: 600; color: var(--ink);
+}
+.stage h2 { font-size: 1.55rem; padding-top: 0.15rem; }
+.stage p { max-width: var(--measure); }
+.status { display: inline-block; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 0.8rem; }
+.status b { color: var(--ink); font-weight: 600; }
+
+figure { margin: 1.5rem 0 0; max-width: 46rem; }
+figure img { background: var(--white); border: 1px solid var(--rule); }
+figcaption { font-size: 0.92rem; color: var(--ink-soft); margin-top: 0.5rem; }
+
+/* Publications */
+.pubs { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.pubs li { padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
+.pubs li:first-child { border-top: 1px solid var(--rule); }
+.pubs .title { font-weight: 600; display: block; }
+.pubs .venue { color: var(--ink-soft); display: block; }
+
+/* Contact */
+.contact { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.contact li { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--rule); }
+.contact span { color: var(--ink-soft); }
+
+.button { display: inline-block; margin-top: 1.5rem; padding: 0.7rem 1.2rem; background: var(--ink); color: var(--white); text-decoration: none; border-radius: 4px; font-weight: 600; }
+.button:hover { background: var(--feeder); color: var(--white); }
+
+/* Footer */
+.site-foot { border-top: 1px solid var(--rule); padding-block: 1.5rem 2.5rem; color: var(--ink-soft); font-size: 0.92rem; }
+
+@media (max-width: 34rem) {
+  .points { grid-template-columns: 1fr; }
+  .contact li { grid-template-columns: 1fr; gap: 0.1rem; }
+  .stage { padding-left: 2.9rem; }
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laith Alkhawaldeh — Peer-to-peer energy trading research</title>
+  <meta name="description" content="PhD research at the University of Waterloo: letting homes with solar trade energy with their neighbours in real time, without overloading the local grid.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="name" href="index.html">Laith Alkhawaldeh</a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Letting neighbours trade solar power without overloading the street's wires</h1>
+      <p class="lede">Homes with solar panels and batteries often make more energy than they use. My research lets them sell it directly to nearby homes, in real time, while keeping voltages and cables within safe limits, and records every trade on a tamper-proof ledger.</p>
+
+      <svg class="feeder" viewBox="0 0 960 230" role="img" aria-labelledby="feeder-title feeder-desc">
+        <title id="feeder-title">A neighbourhood feeder with homes trading energy</title>
+        <desc id="feeder-desc">A substation feeds one line that serves five homes. Three homes have solar panels and send energy to their neighbours along the same line.</desc>
+        <!-- substation: two overlapping circles, the drawing symbol for a transformer -->
+        <circle class="sub" cx="44" cy="62" r="18"/>
+        <circle class="sub" cx="68" cy="62" r="18"/>
+        <text x="20" y="112">Substation</text>
+        <!-- main feeder and drops to each home -->
+        <path class="line" d="M86 62 H920 M190 62 V118 M370 62 V118 M550 62 V118 M730 62 V118 M900 62 V118"/>
+        <!-- homes -->
+        <g>
+          <path class="house" d="M160 150 L190 120 L220 150 V186 H160 Z"/>
+          <rect class="pv" x="172" y="134" width="22" height="6" transform="rotate(-45 183 137)"/>
+          <path class="house" d="M340 150 L370 120 L400 150 V186 H340 Z"/>
+          <path class="house" d="M520 150 L550 120 L580 150 V186 H520 Z"/>
+          <rect class="pv" x="532" y="134" width="22" height="6" transform="rotate(-45 543 137)"/>
+          <path class="house" d="M700 150 L730 120 L760 150 V186 H700 Z"/>
+          <path class="house" d="M870 150 L900 120 L930 150 V186 H870 Z"/>
+          <rect class="pv" x="882" y="134" width="22" height="6" transform="rotate(-45 893 137)"/>
+        </g>
+        <!-- trades between neighbours -->
+        <path class="trade" d="M200 196 Q280 228 360 196"/>
+        <path class="trade" d="M560 196 Q640 228 720 196"/>
+        <path class="trade" d="M890 196 Q815 228 740 196"/>
+        <text x="420" y="30">One feeder, many small sellers and buyers</text>
+      </svg>
+      <p class="feeder-caption">Every trade travels over the same shared cable. The hard part is agreeing on trades quickly while making sure the cable and voltages stay safe.</p>
+
+      <p class="who"><strong>PhD candidate, Electrical and Computer Engineering, University of Waterloo.</strong><br>
+      Supervised by Prof. Claudio Cañizares and Prof. Kankar Bhattacharya.</p>
+    </section>
+
+    <section aria-labelledby="what">
+      <h2 id="what">What the work does</h2>
+      <ul class="points">
+        <li>
+          <h3>Trades in real time</h3>
+          <p>Schedules are re-optimized every five minutes, so trading follows actual sunshine and demand instead of a day-old forecast.</p>
+        </li>
+        <li>
+          <h3>Keeps the grid safe</h3>
+          <p>Each trade is checked against voltage and cable limits on standard 15-, 33- and 141-bus distribution feeders, and the model is validated with full AC power flow.</p>
+        </li>
+        <li>
+          <h3>No central controller needed</h3>
+          <p>Homes solve their own problem and agree on trades through a distributed method (ADMM) that tunes itself to converge quickly.</p>
+        </li>
+        <li>
+          <h3>Settles trades on a blockchain</h3>
+          <p>Smart contracts record each trade, compare it with the meter reading, and pay or penalize automatically.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="recognition">
+      <h2 id="recognition">Recognition</h2>
+      <p class="award"><strong>Best Student Paper Award</strong>, IEEE PES ISGT-Asia 2025, Guangzhou, for the adaptive ADMM method for peer-to-peer trading.</p>
+      <p><a href="research.html">See how the research fits together</a></p>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">Laith Alkhawaldeh, University of Waterloo. Built with plain HTML and hosted on GitHub Pages.</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research — Laith Alkhawaldeh</title>
+  <meta name="description" content="Four stages of PhD research on peer-to-peer energy trading: day-ahead market, real-time MPC, network and AC validation, and blockchain settlement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="name" href="index.html">Laith Alkhawaldeh</a>
+      <nav aria-label="Main">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html" aria-current="page">Research</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>Research</h1>
+    <p class="lede">The work is built in four stages. Each one keeps the model from the stage before and adds what a real distribution grid needs next.</p>
+
+    <ol class="stages">
+      <li class="stage">
+        <h2>A day-ahead market solved by the homes themselves</h2>
+        <span class="status"><b>Published</b>, IEEE PES ISGT-Asia 2025, Best Student Paper Award</span>
+        <p>Four homes with solar panels and batteries plan the next day's trades. I solved the same market three ways: with one central optimizer, with dual decomposition, and with ADMM, where each home solves its own problem and only shares its trade offers.</p>
+        <p>Plain ADMM needs a tuning value (the penalty, rho) chosen by hand, and a poor choice makes it slow or stops it converging. I developed an adaptive version that adjusts the penalty automatically as it runs, so homes reach agreement quickly without manual tuning.</p>
+        <figure>
+          <img src="images/house-power-profile.png" width="1280" height="612" loading="lazy"
+               alt="Line chart of one home's power over a day in 15-minute steps. At midday its solar output peaks and most of the surplus is sold to neighbours rather than exported to the grid.">
+          <figcaption>One home over a day. Around midday its solar surplus (purple) is mostly sold to neighbours (red) instead of the grid.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/adaptive-admm-convergence.png" width="1000" height="600" loading="lazy"
+               alt="Log-scale chart of primal and dual residuals over about 30 ADMM iterations, both falling by several orders of magnitude.">
+          <figcaption>Adaptive ADMM converging: both errors fall steadily as the homes agree on their trades.</figcaption>
+        </figure>
+      </li>
+
+      <li class="stage">
+        <h2>Real-time trading with model predictive control</h2>
+        <span class="status"><b>Submitted</b>, IEEE PES General Meeting 2027</span>
+        <p>Forecasts made a day ahead are never exact. In this stage the market is re-solved every five minutes over a rolling look-ahead window, and only the first step is carried out before the next update.</p>
+        <p>I compared five coordination models: market only, market with a network usage charge, a central optimizer, ADMM, and adaptive ADMM. The tests also scale the community from 4 homes up to 100.</p>
+      </li>
+
+      <li class="stage">
+        <h2>Respecting the physical grid</h2>
+        <span class="status"><b>Submitted</b>, IEEE PES General Meeting 2027</span>
+        <p>Trades share the same cables, so a market that ignores the network can overload lines or push voltages out of range. This stage adds a linearized power-flow model (LinDistFlow) with voltage and cable limits on standard 15-, 33- and 141-bus distribution feeders, and solves it in a distributed way.</p>
+        <p>To check that the simplified model is trustworthy, I compared its results against a full AC power-flow model of the same feeder.</p>
+      </li>
+
+      <li class="stage">
+        <h2>Blockchain verification and settlement</h2>
+        <span class="status"><b>In preparation</b>, IEEE Transactions on Smart Grid</span>
+        <p>Neighbours need to trust each other's records. Smart contracts register each agreed trade, compare it with the meter reading, and transfer payment in an energy token, with a penalty when a seller delivers less than promised.</p>
+        <p>The settlement runs interval by interval alongside the real-time market, and was tested on the 15-, 33- and 141-bus feeders using a local Ethereum network.</p>
+      </li>
+    </ol>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">Laith Alkhawaldeh, University of Waterloo. Built with plain HTML and hosted on GitHub Pages.</div>
+  </footer>
+</body>
+</html>
