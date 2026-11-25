@@ -20,6 +20,7 @@
           <li><a href="research.html" aria-current="page">Research</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a class="cv-link" href="cv.pdf">CV</a></li>
         </ul>
       </nav>
     </div>
@@ -29,8 +30,15 @@
     <h1>Research</h1>
     <p class="lede">The work is built in four stages. Each one keeps the model from the stage before and adds what a real distribution grid needs next.</p>
 
+    <ul class="overview" aria-label="Stages">
+      <li><a href="#stage-1"><b>Day-ahead market</b><span>Homes agree on tomorrow's trades without a central controller.</span></a></li>
+      <li><a href="#stage-2"><b>Real-time control</b><span>Trades re-planned every five minutes as sun and demand change.</span></a></li>
+      <li><a href="#stage-3"><b>Grid limits</b><span>Voltage and cable limits on real test feeders, checked with AC power flow.</span></a></li>
+      <li><a href="#stage-4"><b>Blockchain settlement</b><span>Smart contracts verify delivery and pay automatically.</span></a></li>
+    </ul>
+
     <ol class="stages">
-      <li class="stage">
+      <li class="stage" id="stage-1">
         <h2>A day-ahead market solved by the homes themselves</h2>
         <span class="status"><b>Published</b>, IEEE PES ISGT-Asia 2025, Best Student Paper Award</span>
         <p>Four homes with solar panels and batteries plan the next day's trades. I solved the same market three ways: with one central optimizer, with dual decomposition, and with ADMM, where each home solves its own problem and only shares its trade offers.</p>
@@ -47,25 +55,35 @@
         </figure>
       </li>
 
-      <li class="stage">
+      <li class="stage" id="stage-2">
         <h2>Real-time trading with model predictive control</h2>
         <span class="status"><b>Submitted</b>, IEEE PES General Meeting 2027</span>
         <p>Forecasts made a day ahead are never exact. In this stage the market is re-solved every five minutes over a rolling look-ahead window, and only the first step is carried out before the next update.</p>
         <p>I compared five coordination models: market only, market with a network usage charge, a central optimizer, ADMM, and adaptive ADMM. The tests also scale the community from 4 homes up to 100.</p>
       </li>
 
-      <li class="stage">
+      <li class="stage" id="stage-3">
         <h2>Respecting the physical grid</h2>
         <span class="status"><b>Submitted</b>, IEEE PES General Meeting 2027</span>
         <p>Trades share the same cables, so a market that ignores the network can overload lines or push voltages out of range. This stage adds a linearized power-flow model (LinDistFlow) with voltage and cable limits on standard 15-, 33- and 141-bus distribution feeders, and solves it in a distributed way.</p>
         <p>To check that the simplified model is trustworthy, I compared its results against a full AC power-flow model of the same feeder.</p>
+        <figure>
+          <img src="images/network-model.png" width="1536" height="1024" loading="lazy"
+               alt="Diagram of a radial distribution feeder from the substation to five buses with homes, and the six LinDistFlow equations: power balance, voltage drop, branch limits, voltage limits and reactive-power limits.">
+          <figcaption>The network model: power flows from the substation along the feeder, and every trade must keep branch flows and bus voltages inside their limits.</figcaption>
+        </figure>
       </li>
 
-      <li class="stage">
+      <li class="stage" id="stage-4">
         <h2>Blockchain verification and settlement</h2>
         <span class="status"><b>In preparation</b>, IEEE Transactions on Smart Grid</span>
         <p>Neighbours need to trust each other's records. Smart contracts register each agreed trade, compare it with the meter reading, and transfer payment in an energy token, with a penalty when a seller delivers less than promised.</p>
         <p>The settlement runs interval by interval alongside the real-time market, and was tested on the 15-, 33- and 141-bus feeders using a local Ethereum network.</p>
+        <figure>
+          <img src="images/settlement-system.png" width="1600" height="900" loading="lazy"
+               alt="Block diagram: an off-chain system where homes and the adaptive ADMM optimizer produce the trade schedule, connected to an on-chain system where the P2PSettlement contract registers, verifies and settles trades and the EnergyToken contract handles payments.">
+          <figcaption>How the parts connect: the optimizer decides the trades off-chain, and the blockchain verifies delivery and settles payment.</figcaption>
+        </figure>
       </li>
     </ol>
   </main>

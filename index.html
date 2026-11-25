@@ -20,48 +20,62 @@
           <li><a href="research.html">Research</a></li>
           <li><a href="publications.html">Publications</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a class="cv-link" href="cv.pdf">CV</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>Letting neighbours trade solar power without overloading the street's wires</h1>
-      <p class="lede">Homes with solar panels and batteries often make more energy than they use. My research lets them sell it directly to nearby homes, in real time, while keeping voltages and cables within safe limits, and records every trade on a tamper-proof ledger.</p>
+  <div class="hero-band">
+    <div class="wrap hero">
+      <div class="hero-top">
+        <div class="hero-text">
+          <h1>Letting neighbours trade solar power without overloading the street's wires</h1>
+          <p class="lede">Homes with solar panels and batteries often make more energy than they use. My research lets them sell it directly to nearby homes, in real time, while keeping voltages and cables within safe limits, and records every trade on a tamper-proof ledger.</p>
+        </div>
+        <figure class="hero-photo">
+          <img src="images/laith.jpg" width="560" height="700" alt="Laith Alkhawaldeh smiling, seated on a terrace on the University of Waterloo campus.">
+          <figcaption><strong>Laith Alkhawaldeh</strong><br>PhD candidate, University of Waterloo</figcaption>
+        </figure>
+      </div>
 
-      <svg class="feeder" viewBox="0 0 960 230" role="img" aria-labelledby="feeder-title feeder-desc">
+      <svg class="feeder" viewBox="0 0 960 250" role="img" aria-labelledby="feeder-title feeder-desc">
         <title id="feeder-title">A neighbourhood feeder with homes trading energy</title>
         <desc id="feeder-desc">A substation feeds one line that serves five homes. Three homes have solar panels and send energy to their neighbours along the same line.</desc>
-        <!-- substation: two overlapping circles, the drawing symbol for a transformer -->
         <circle class="sub" cx="44" cy="62" r="18"/>
         <circle class="sub" cx="68" cy="62" r="18"/>
         <text x="20" y="112">Substation</text>
-        <!-- main feeder and drops to each home -->
         <path class="line" d="M86 62 H920 M190 62 V118 M370 62 V118 M550 62 V118 M730 62 V118 M900 62 V118"/>
-        <!-- homes -->
-        <g>
-          <path class="house" d="M160 150 L190 120 L220 150 V186 H160 Z"/>
-          <rect class="pv" x="172" y="134" width="22" height="6" transform="rotate(-45 183 137)"/>
-          <path class="house" d="M340 150 L370 120 L400 150 V186 H340 Z"/>
-          <path class="house" d="M520 150 L550 120 L580 150 V186 H520 Z"/>
-          <rect class="pv" x="532" y="134" width="22" height="6" transform="rotate(-45 543 137)"/>
-          <path class="house" d="M700 150 L730 120 L760 150 V186 H700 Z"/>
-          <path class="house" d="M870 150 L900 120 L930 150 V186 H870 Z"/>
-          <rect class="pv" x="882" y="134" width="22" height="6" transform="rotate(-45 893 137)"/>
-        </g>
-        <!-- trades between neighbours -->
-        <path class="trade" d="M200 196 Q280 228 360 196"/>
-        <path class="trade" d="M560 196 Q640 228 720 196"/>
-        <path class="trade" d="M890 196 Q815 228 740 196"/>
+        <circle class="glow" cx="190" cy="152" r="46"/>
+        <circle class="glow" cx="550" cy="152" r="46"/>
+        <circle class="glow" cx="900" cy="152" r="46"/>
+        <path class="house" d="M160 150 L190 120 L220 150 V186 H160 Z"/>
+        <rect class="pv" x="172" y="134" width="22" height="6" transform="rotate(-45 183 137)"/>
+        <path class="house" d="M340 150 L370 120 L400 150 V186 H340 Z"/>
+        <path class="house" d="M520 150 L550 120 L580 150 V186 H520 Z"/>
+        <rect class="pv" x="532" y="134" width="22" height="6" transform="rotate(-45 543 137)"/>
+        <path class="house" d="M700 150 L730 120 L760 150 V186 H700 Z"/>
+        <path class="house" d="M870 150 L900 120 L930 150 V186 H870 Z"/>
+        <rect class="pv" x="882" y="134" width="22" height="6" transform="rotate(-45 893 137)"/>
+        <path id="t1" class="trade" d="M200 196 Q280 228 360 196"/>
+        <path id="t2" class="trade" d="M560 196 Q640 228 720 196"/>
+        <path id="t3" class="trade" d="M890 196 Q815 228 740 196"/>
+        <circle class="packet" r="5"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#t1"/></animateMotion></circle>
+        <circle class="packet" r="5"><animateMotion dur="2.6s" begin="0.8s" repeatCount="indefinite"><mpath href="#t2"/></animateMotion></circle>
+        <circle class="packet" r="5"><animateMotion dur="2.6s" begin="1.6s" repeatCount="indefinite"><mpath href="#t3"/></animateMotion></circle>
+        <text class="label-sell" x="168" y="240">sells</text>
+        <text class="label-buy" x="350" y="240">buys</text>
+        <text class="label-sell" x="528" y="240">sells</text>
+        <text class="label-buy" x="712" y="240">buys</text>
+        <text class="label-sell" x="880" y="240">sells</text>
         <text x="420" y="30">One feeder, many small sellers and buyers</text>
       </svg>
-      <p class="feeder-caption">Every trade travels over the same shared cable. The hard part is agreeing on trades quickly while making sure the cable and voltages stay safe.</p>
 
-      <p class="who"><strong>PhD candidate, Electrical and Computer Engineering, University of Waterloo.</strong><br>
-      Supervised by Prof. Claudio Cañizares and Prof. Kankar Bhattacharya.</p>
-    </section>
+      <p class="who">Electrical and Computer Engineering, University of Waterloo. Supervised by Prof. Claudio Cañizares and Prof. Kankar Bhattacharya.</p>
+    </div>
+  </div>
 
+  <main class="wrap home-main">
     <section aria-labelledby="what">
       <h2 id="what">What the work does</h2>
       <ul class="points">
@@ -84,9 +98,40 @@
       </ul>
     </section>
 
+    <section aria-labelledby="path">
+      <h2 id="path">From power electronics to smart grids</h2>
+      <p class="prose">Hands-on hardware and industry work came first; it shapes how I think about what a real grid can do.</p>
+      <ol class="path">
+        <li><span class="when">2014</span><span class="what">BSc, Electrical Power Engineering</span><span class="where">Tafila Technical University, Jordan. Ranked first in class.</span></li>
+        <li><span class="when">2015 to 2019</span><span class="what">Laboratory Instructor</span><span class="where">Al-Hussein Bin Talal University, Jordan.</span></li>
+        <li><span class="when">2019 to 2022</span><span class="what">MASc (2021) and research</span><span class="where">Ontario Tech University. EV chargers and solar inverters.</span></li>
+        <li><span class="when">2022 to 2023</span><span class="what">Electrical Services Technician Lead</span><span class="where">Alstom, Toronto. Finch West LRT train testing.</span></li>
+        <li class="now"><span class="when">Now, finishing 2027</span><span class="what">PhD, Electrical and Computer Engineering</span><span class="where">University of Waterloo. Peer-to-peer energy trading.</span></li>
+      </ol>
+    </section>
+
     <section aria-labelledby="recognition">
       <h2 id="recognition">Recognition</h2>
-      <p class="award"><strong>Best Student Paper Award</strong>, IEEE PES ISGT-Asia 2025, Guangzhou, for the adaptive ADMM method for peer-to-peer trading.</p>
+      <p class="award"><strong>Best Student Paper Award</strong>, IEEE PES ISGT Asia 2025, Guangzhou, China, for <em>Adaptive ADMM for Distributed Peer-to-Peer Energy Trading</em>, with Prof. Claudio Cañizares and Prof. Kankar Bhattacharya. <a href="https://uwaterloo.ca/electrical-computer-engineering/news/electrical-and-computer-engineering-phd-student-laith">Read the University of Waterloo news story</a></p>
+      <div class="gallery">
+        <figure>
+          <img src="images/isgt-asia-2025.jpg" width="1400" height="788" loading="lazy" alt="Laith and his supervisor standing either side of the IEEE PES ISGT Asia 2025 session programme board in Guangzhou.">
+          <figcaption>With my supervisor at IEEE PES ISGT Asia 2025 in Guangzhou, where the paper was presented.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/award-certificate.jpg" width="990" height="933" loading="lazy" alt="IEEE certificate awarding Best Student Paper to Laith Alkhawaldeh, Claudio A. Cañizares and Kankar Bhattacharya, ISGT Asia 2025, Oct. 31 to Nov. 2, Guangzhou.">
+          <figcaption>The Best Student Paper certificate, ISGT Asia 2025.</figcaption>
+        </figure>
+      </div>
+      <ul class="honours">
+        <li><strong>Graduate scholarship</strong> from Al-Hussein Bin Talal University, Jordan, for PhD studies at the University of Waterloo.</li>
+        <li><strong>Ranked first</strong> among graduating students in Electrical Power Engineering, Tafila Technical University, 2014.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="service">
+      <h2 id="service">University service</h2>
+      <p class="prose">Elected graduate student senator on the <a href="https://uwaterloo.ca/secretariat/governing-bodies/senate">University of Waterloo Senate</a>, current term ending August 31, 2027. In 2025–2026 I also sat on the Senate Planning and Finance Committee and took part in joint meetings of the Board of Governors and Senate.</p>
       <p><a href="research.html">See how the research fits together</a></p>
     </section>
   </main>
